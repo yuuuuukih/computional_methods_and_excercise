@@ -7,7 +7,6 @@ def newton(f: FunctionS, k_max: int, x_0: float, eps: float) -> OutputFunc:
     k: int = 0
     x: VectorS = [x_0]
     TRUE_VALUE: Final[float] = 1.4142135623730954
-    cnt: int = 1
     err: VectorS = []
     while k < k_max:
         x.append(x[k] - f(x[k]) / diff(f, x[k], 0.001))
@@ -15,12 +14,11 @@ def newton(f: FunctionS, k_max: int, x_0: float, eps: float) -> OutputFunc:
         if abs(x[k+1] - x[k]) > eps:
             err.append(abs(x[k+1] - TRUE_VALUE))
             k += 1
-            cnt += 1
         else:
             break
 
     # print("newton: ",x[k])
     # print("newton: ", cnt)
-    output: OutputFunc = {'sol': x[k], 'err': err, 'cnt': cnt}
+    output: OutputFunc = {'sol': x[k], 'err': err, 'cnt': k}
 
     return output

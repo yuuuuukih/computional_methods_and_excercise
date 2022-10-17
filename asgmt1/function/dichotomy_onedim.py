@@ -6,7 +6,6 @@ def dichotomy(f: FunctionS, x1_0: float, x2_0: float ,eps: float) -> OutputFunc:
     x2: VectorS = [x2_0]
     x_mid: VectorS = []
     k: int = 0
-    cnt: int = 1
     TRUE_VALUE: Final[float] = 1.4142135623730954
     err: VectorS = []
     while abs(x1[k] - x2[k]) >= eps:
@@ -21,10 +20,9 @@ def dichotomy(f: FunctionS, x1_0: float, x2_0: float ,eps: float) -> OutputFunc:
 
         err.append(abs(x_mid[k] - TRUE_VALUE))
         k += 1
-        cnt += 1
 
     # print("dichotomy: ", x_mid[k - 1])
     # print("dichotomy: ", cnt)
-    output: OutputFunc = {'sol': x_mid[k - 1], 'err': err, 'cnt': cnt}
+    output: OutputFunc = {'sol': x_mid[k - 1], 'err': err, 'cnt': k}
 
     return output
