@@ -24,3 +24,7 @@ class _OutputFuncOptional(TypedDict, total=False):
 
 class OutputFunc(_OutputFuncRequired, _OutputFuncOptional):
     pass
+
+class TrueSolDict(TypedDict):
+    label: str
+    true_sol: VectorS

@@ -1,5 +1,7 @@
 from asgmt1.mytyping.typing import VectorS, MatrixS
 
+#NxNの等列かつ零行列でないものをmatにひきとる
+#i行目のi列の数値が0のとき、i+1行目以降かつi列目が0でない行と入れ替える関数
 def exchange_with_computable_row(mat: MatrixS, i: int) -> None:
     eps: float = 1e-4
     if abs(mat[i][i]) < eps:
@@ -12,6 +14,7 @@ def exchange_with_computable_row(mat: MatrixS, i: int) -> None:
         mat[i], exchangeable_vector = exchangeable_vector, mat[i]
         mat[i + 1 + j] = exchangeable_vector
 
+#ベクトル(リスト)の値をある数値で割り、リストで返す関数
 def devide_a_vec_by_a_const(vec: VectorS, divisor: float) -> VectorS:
     return [el / divisor for el in vec]
 
@@ -49,8 +52,5 @@ def solve_by_gaussian_elimination(A: MatrixS, b: VectorS) -> VectorS:
 
     #拡大係数行列の最も右をxに当てはめる
     x: VectorS = [aug_mat[i][dim] for i in range(dim)]
-
-    # print(aug_mat)
-    # print(x)
 
     return x
