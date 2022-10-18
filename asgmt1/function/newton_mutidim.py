@@ -1,8 +1,8 @@
 from .jacobian import jacobian
-from asgmt1.mytyping.typing import VectorS, MatrixS, VectorF
+from asgmt1.mytyping.typing import VectorS, MatrixS, VectorF, OutputFunc
 from .GaussianElimination import solve_by_gaussian_elimination
 
-def newton_multidim(vec_f: VectorF, k_max: int, vec_x0: VectorS) -> None:
+def newton_multidim(vec_f: VectorF, k_max: int, vec_x0: VectorS) -> OutputFunc:
     vec_x: MatrixS = [vec_x0] #xkを保存
     vec_delta_x: MatrixS = [] #delta_xkを保存
     vec_f_x: MatrixS = [] #vec_fにvec_xkを代入したもの(vec_f(vec_xk))を保存
@@ -18,4 +18,6 @@ def newton_multidim(vec_f: VectorF, k_max: int, vec_x0: VectorS) -> None:
 
         k += 1
 
-    print(vec_x[k])
+    # print(vec_x[k])
+    output: OutputFunc = {'sol': vec_x[k], 'cnt': len(vec_x) - 1}
+    return output

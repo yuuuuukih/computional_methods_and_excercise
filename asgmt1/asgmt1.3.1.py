@@ -15,8 +15,8 @@ def main():
     # solve_by_gaussian_elimination([[2,3,-1],[-2,1,1],[1,1,-1]], [-3,2,-2])
     vec_f = [f1, f2]
     vec_x0 = [np.sqrt(2), np.sqrt(2)]
-    newton_multidim(vec_f, 100, vec_x0)
-
+    sol = newton_multidim(vec_f, 100, vec_x0)['sol']
+    print(sol)
 
 if __name__ == '__main__':
     main()

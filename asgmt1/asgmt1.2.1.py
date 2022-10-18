@@ -18,7 +18,7 @@ def scatter_asgmt121(x_newton, y_newton, x_dichotomy, y_dichotomy):
 
     ax.scatter(x_newton, y_newton, label='newton')
     ax.scatter(x_dichotomy, y_dichotomy, label='dichotomy')
-    ax.legend()
+    ax.legend(title="algorithm")
     plt.show()
 
 def main():

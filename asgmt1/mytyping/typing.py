@@ -14,7 +14,13 @@ MatrixS = list[VectorS]
 VectorF = list[any]
 MatrixF = list[VectorF]
 
-class OutputFunc(TypedDict):
-    sol: float
-    err: VectorS
+#output of algorithm
+class _OutputFuncRequired(TypedDict):
+    sol: float | VectorS
     cnt: int
+
+class _OutputFuncOptional(TypedDict, total=False):
+    err: VectorS
+
+class OutputFunc(_OutputFuncRequired, _OutputFuncOptional):
+    pass
