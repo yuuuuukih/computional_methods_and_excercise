@@ -1,5 +1,5 @@
 import numpy as np
-from mytyping.typing import VectorS
+from mytyping.typing import VectorS, VectorF
 from function.newton_mutidim import newton_multidim
 
 
@@ -13,8 +13,8 @@ def f2(vec_x: VectorS) -> float:
 
 def main():
     # solve_by_gaussian_elimination([[2,3,-1],[-2,1,1],[1,1,-1]], [-3,2,-2])
-    vec_f = [f1, f2]
-    vec_x0 = [np.sqrt(2), np.sqrt(2)]
+    vec_f: VectorF = [f1, f2]
+    vec_x0: VectorS = [np.sqrt(2), np.sqrt(2)]
     sol = newton_multidim(vec_f, 100, vec_x0)['sol']
     print(sol)
 
