@@ -2,8 +2,8 @@ from mytyping.typing import VectorS
 from function.newton_onedim import newton
 from function.dichotomy_onedim import dichotomy
 import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
+# import seaborn as sns
+# import pandas as pd
 
 def f(x: float) -> float:
     return x**5 + x**4 - x**3 - x**2 - 2*x -2
