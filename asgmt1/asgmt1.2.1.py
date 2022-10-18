@@ -2,6 +2,8 @@ from mytyping.typing import VectorS
 from function.newton_onedim import newton
 from function.dichotomy_onedim import dichotomy
 import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
 def f(x: float) -> float:
     return x**5 + x**4 - x**3 - x**2 - 2*x -2
@@ -30,6 +32,15 @@ def main():
 
     #誤差を描画
     scatter_asgmt121(x_newton, y_newton, x_dichotomy, y_dichotomy)
+
+    # df_newton = pd.DataFrame([x_newton, y_newton], index=['count', 'error']).T
+    # df_newton['algorithm'] = 'newton'
+    # df_dichotomy = pd.DataFrame([x_dichotomy, y_dichotomy], index=['count', 'error']).T
+    # df_dichotomy['algorithm'] = 'dichotomy'
+    # df = pd.concat([df_newton, df_dichotomy], axis=0)
+    # sns.set(style='whitegrid')
+    # sns.scatterplot(x='count', y='error', data=df, palette='pastel', hue='algorithm')
+    # plt.show()
 
 if __name__ == '__main__':
     main()
