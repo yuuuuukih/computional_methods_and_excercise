@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-from mytyping.typing import VectorS, VectorF
+from mytyping.typing import VectorS, VectorF, MatrixS
+from function.newton_mutidim import newton_multidim
 
 
 def f1(vec_x: VectorS) -> float:
@@ -19,6 +20,19 @@ def calc_distance(P: VectorS, Q: VectorS) -> float:
 
 def main():
     vec_f: VectorF = [f1, f2]
+    vec_x0s: MatrixS = []
+    squared_number_of_divisions: int = 5
+    for i in range(squared_number_of_divisions):
+        x = np.linspace(-2, 2, squared_number_of_divisions)
+        for j in range(squared_number_of_divisions):
+            y = np.linspace(-2, 2, squared_number_of_divisions)
+            vec_x0s.append([x[i], y[j]])
+
+    ans: VectorS = []
+    for vec_x0 in vec_x0s:
+        ans.append(newton_multidim(vec_f, 100, vec_x0)['sol'])
+
+    print(ans)
     return 0
 
 if __name__ == '__main__':

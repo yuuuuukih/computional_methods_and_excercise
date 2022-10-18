@@ -5,7 +5,7 @@ def exchange_with_computable_row(mat: MatrixS, i: int) -> None:
     if abs(mat[i][i]) < eps:
         j: int = 0
         exchangeable_vector: VectorS = mat[i + 1 + j]
-        while exchangeable_vector[i] < eps:
+        while abs(exchangeable_vector[i]) < eps:
             j += 1
             exchangeable_vector = mat[i + 1 + j]
 
