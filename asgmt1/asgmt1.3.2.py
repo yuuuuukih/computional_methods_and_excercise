@@ -4,7 +4,6 @@ from mytyping.typing import VectorS, VectorF, MatrixS, TrueSolDict
 from function.newton_mutidim import newton_multidim
 from typing import Final
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 def f1(vec_x: VectorS) -> float:
@@ -15,6 +14,7 @@ def f2(vec_x: VectorS) -> float:
     x1, x2 = vec_x
     return 3 * x1**2 * x2 - x2**3
 
+#PとQのユークリッド距離を求める
 def calc_distance(P: VectorS, Q: VectorS) -> float:
     dist_squared: float = 0
     for i in range(len(P)):
@@ -57,6 +57,7 @@ def main():
         {'label': 'other'}
     ]
 
+    #解に応じて分類分けする
     eps = 1e-3
     for i in range(len(df.index)):
         if calc_distance(df.loc[i, 'x_sol': 'y_sol'], TRUE_SOLS[0]['true_sol']) < eps:
@@ -68,8 +69,6 @@ def main():
         else:
             df.loc[i, 'type_of_sol'] = TRUE_SOLS[3]['label']
 
-    # sns.scatterplot(x='x_ini', y='y_ini', data=df, hue='type_of_sol')
-    # plt.show()
 
     #描画
     plt.rcParams['font.family'] = "Meiryo"
