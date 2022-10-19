@@ -73,7 +73,7 @@ def main():
 
     #描画
     plt.rcParams['font.family'] = "Meiryo"
-    fig = plt.figure(figsize=(4,4), dpi=100)
+    fig = plt.figure(figsize=(6,6), dpi=100)
     fig.subplots_adjust(left=0.2, bottom=0.2)
     ax = fig.add_subplot(1, 1, 1, xlabel="x_ini", ylabel="y_ini")
     ax.grid(color="#eeeeee", which="both")
