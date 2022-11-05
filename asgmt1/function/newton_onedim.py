@@ -17,8 +17,6 @@ def newton(f: FunctionS, k_max: int, x_0: float, eps: float) -> OutputFunc:
         else:
             break
 
-    # print("newton: ",x[k])
-    # print("newton: ", cnt)
     output: OutputFunc = {'sol': x[k], 'err': err, 'cnt': len(x)-1}
 
     return output

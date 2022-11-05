@@ -33,14 +33,6 @@ def main():
     #誤差を描画
     scatter_asgmt121(x_newton, y_newton, x_dichotomy, y_dichotomy)
 
-    # df_newton = pd.DataFrame([x_newton, y_newton], index=['count', 'error']).T
-    # df_newton['algorithm'] = 'newton'
-    # df_dichotomy = pd.DataFrame([x_dichotomy, y_dichotomy], index=['count', 'error']).T
-    # df_dichotomy['algorithm'] = 'dichotomy'
-    # df = pd.concat([df_newton, df_dichotomy], axis=0)
-    # sns.set(style='whitegrid')
-    # sns.scatterplot(x='count', y='error', data=df, palette='pastel', hue='algorithm')
-    # plt.show()
 
 if __name__ == '__main__':
     main()

@@ -21,8 +21,6 @@ def dichotomy(f: FunctionS, x1_0: float, x2_0: float ,eps: float) -> OutputFunc:
         err.append(abs(x_mid[k] - TRUE_VALUE))
         k += 1
 
-    # print("dichotomy: ", x_mid[k - 1])
-    # print("dichotomy: ", cnt)
     output: OutputFunc = {'sol': x_mid[k - 1], 'err': err, 'cnt': len(x_mid)}
 
     return output
