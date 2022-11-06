@@ -2,6 +2,7 @@ from .jacobian import jacobian
 from asgmt1.mytyping.typing import VectorS, MatrixS, VectorF, OutputFunc
 from .GaussianElimination import solve_by_gaussian_elimination
 
+
 def newton_multidim(vec_f: VectorF, k_max: int, vec_x0: VectorS) -> OutputFunc:
     vec_x: MatrixS = [vec_x0] #xkを保存
     vec_delta_x: MatrixS = [] #delta_xkを保存
