@@ -15,7 +15,7 @@ def main():
     vec_f: VectorF = [f1, f2]
     vec_x0: VectorS = [np.sqrt(2), np.sqrt(2)]
     sols: MatrixS = []
-    for i in range(100):
+    for i in range(20):
         output = newton_multidim(vec_f, i, vec_x0)
         sols.append(output['sol'])
         i += 1

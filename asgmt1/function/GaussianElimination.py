@@ -5,14 +5,19 @@ from asgmt1.mytyping.typing import VectorS, MatrixS
 def exchange_with_computable_row(mat: MatrixS, i: int) -> None:
     eps: float = 1e-4
     if abs(mat[i][i]) < eps:
-        j: int = 0
-        exchangeable_vector: VectorS = mat[i + 1 + j]
-        while abs(exchangeable_vector[i]) < eps:
-            j += 1
-            exchangeable_vector = mat[i + 1 + j]
+        try:
+            j: int = 0
+            exchangeable_vector: VectorS = mat[i + 1 + j]
 
-        mat[i], exchangeable_vector = exchangeable_vector, mat[i]
-        mat[i + 1 + j] = exchangeable_vector
+            while abs(exchangeable_vector[i]) < eps:
+                j += 1
+                exchangeable_vector = mat[i + 1 + j]
+
+            mat[i], exchangeable_vector = exchangeable_vector, mat[i]
+            mat[i + 1 + j] = exchangeable_vector
+
+        except IndexError:
+            print('A matrix with a zero vector in one column has been entered.')
 
 #ベクトル(リスト)の値をある数値で割り、リストで返す関数
 def devide_a_vec_by_a_const(vec: VectorS, divisor: float) -> VectorS:

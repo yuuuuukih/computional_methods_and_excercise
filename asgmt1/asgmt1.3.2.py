@@ -2,8 +2,11 @@ import numpy as np
 import pandas as pd
 from mytyping.typing import VectorS, VectorF, MatrixS, TrueSolDict
 from function.newton_mutidim import newton_multidim
+from function.calcDist import calc_distance
 from typing import Final
 import matplotlib.pyplot as plt
+from decorator.TimeMeasurement import print_proc_time
+from tqdm import tqdm
 
 
 def f1(vec_x: VectorS) -> float:
@@ -14,12 +17,6 @@ def f2(vec_x: VectorS) -> float:
     x1, x2 = vec_x
     return 3 * x1**2 * x2 - x2**3
 
-#PとQのユークリッド距離を求める
-def calc_distance(P: VectorS, Q: VectorS) -> float:
-    dist_squared: float = 0
-    for i in range(len(P)):
-        dist_squared += (P[i] - Q[i])**2
-    return np.sqrt(dist_squared)
 
 def generate_vectors(x_min: float, x_max: float, y_min: float, y_max: float, number_of_1d_partitions: int) -> MatrixS:
     vecs: MatrixS = []
@@ -35,16 +32,18 @@ def generate_vectors(x_min: float, x_max: float, y_min: float, y_max: float, num
 
     return vecs
 
+
+@print_proc_time
 def main():
     vec_f: VectorF = [f1, f2]
     #[-2,2]x[-2,2]を分割し、初期値としてvec_x0sに保存
-    vec_x0s: MatrixS = generate_vectors(-2, 2, -2, 2, 80)
+    vec_x0s: MatrixS = generate_vectors(-2, 2, -2, 2, 400)
     df1 = pd.DataFrame(vec_x0s, columns=['x_ini', 'y_ini'])
 
     #それぞれの初期値に対する数値解をvec_solsに保尊
     vec_sols: MatrixS = []
-    for vec_x0 in vec_x0s:
-        vec_sols.append(newton_multidim(vec_f, 80, vec_x0)['sol'])
+    for vec_x0 in tqdm(vec_x0s):
+        vec_sols.append(newton_multidim(vec_f, 50, vec_x0)['sol'])
     df2 = pd.DataFrame(vec_sols, columns=['x_sol', 'y_sol'])
 
     #colがx_ini, y_ini, x_sol, y_solになるdfを生成
@@ -58,7 +57,7 @@ def main():
     ]
 
     #解に応じて分類分けする
-    eps = 1e-3
+    eps = 1e-4
     for i in range(len(df.index)):
         if calc_distance(df.loc[i, 'x_sol': 'y_sol'], TRUE_SOLS[0]['true_sol']) < eps:
             df.loc[i, 'type_of_sol'] = TRUE_SOLS[0]['label']
@@ -81,12 +80,11 @@ def main():
     for i in range(len(TRUE_SOLS)):
         ax.scatter(df[df['type_of_sol'] == TRUE_SOLS[i]['label']]['x_ini'],
                    df[df['type_of_sol'] == TRUE_SOLS[i]['label']]['y_ini'],
-                   label=TRUE_SOLS[i]['label'])
+                   label=TRUE_SOLS[i]['label'],
+                   s=2)
 
     ax.legend(title='type_of_sol')
     plt.show()
-
-    return 0
 
 if __name__ == '__main__':
     main()
