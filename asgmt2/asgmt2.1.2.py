@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def main():
     output_jac = calc_iterative_method(A, b1)
     output_gau = calc_iterative_method(A, b1, method='gauss_seidel')
-    output_sor = calc_iterative_method(A, b1, method='sor', omega=1.9)
+    output_sor = calc_iterative_method(A, b1, method='sor', omega=1.852)
 
 
     # 収束先を描画
