@@ -16,6 +16,7 @@ def main():
     ax = fig.add_subplot(1, 1, 1, xlabel='count', ylabel='r')
     ax.grid(color="#eeeeee", which="both")
     ax.set_axisbelow(True)
+    ax.set_xscale('log')
     ax.set_yscale('log')
 
     ax.scatter(np.arange(len(output_jac['err'])), output_jac['err'], label='jacobi', s=2)
