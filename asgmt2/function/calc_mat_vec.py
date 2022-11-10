@@ -3,6 +3,7 @@ import numpy as np
 def calc_mat_vec(mat, vec):
     n = len(mat)
     m = len(vec)
+    # 計算可能かチェック
     if len(mat[0]) != m:
         print('Dimention Error!')
         return
