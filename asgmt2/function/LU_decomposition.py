@@ -19,7 +19,15 @@ def get_LU(A):
                 L[i][j] = A[i][j]
                 for k in range(j):
                     L[i][j] -= L[i][k] * U[k][j]
-                L[i][j] /= U[j][j]
+                # try:
+                #     L[i][j] /= U[j][j]
+                # except RuntimeWarning:
+                #     L[i][j] = 0
+
+                if U[j][j] < 1e-10:
+                    L[i][j] = 0
+                else:
+                    L[i][j] /= U[j][j]
 
             else:
                 # u_ijの計算

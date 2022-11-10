@@ -11,9 +11,9 @@ A = np.array([[12, 1, 5, 1, 1, 2, -4, 1, 2],
               [1, 2, 1, 4, 1, 2, 4, 11, -1],
               [2, 3, -4, 1, 1, 5, -4, -1, 15]], dtype=np.float64)
 
-alpha1 = np.ones(9, dtype=np.float64)
-alpha2 = np.full(9, 1e+10, dtype=np.float64)
-alpha3 = np.full(9, 1e-10, dtype=np.float64)
+alpha1 = np.ones(9)
+alpha2 = np.full(9, 1e+10)
+alpha3 = np.full(9, 1e-10)
 
 b1 = calc_mat_vec(A, alpha1)
 b2 = calc_mat_vec(A, alpha2)
