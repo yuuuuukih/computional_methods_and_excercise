@@ -8,8 +8,8 @@ def get_LU(A):
         print('Input matrix is not a square matrix!')
         return
     # Lは単位行列、Uは零行列で初期化
-    L = np.identity(n, dtype=np.float64)
-    U = np.zeros((n, n), dtype=np.float64)
+    L = np.identity(n)
+    U = np.zeros((n, n))
 
     # 第j列目の計算
     for j in range(n):

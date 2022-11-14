@@ -1,12 +1,11 @@
 import numpy as np
 from const_value import A, b1, alpha1
 from function.LU_decomposition import get_LU
-from function.substitution_method import calc_forward, calc_backward
+from function.substitution_method import calc_forward_backward_by_LU
 
 def main():
     L, U = get_LU(A)
-    y = calc_forward(L, b1)
-    x = calc_backward(U, y)
+    x = calc_forward_backward_by_LU(L, U, b1)
     print(f'x: {x}')
     print(f'(x-alpha1)^2: {np.linalg.norm(x-alpha1, ord=2)**2}')
 

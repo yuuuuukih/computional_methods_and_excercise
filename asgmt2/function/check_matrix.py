@@ -4,6 +4,7 @@ def check_for_tringular_matrix(A, lower=1):
 
     if len(A[0]) != n:
         print('Matrix is not square!')
+        return
 
     name = 'lower' if lower == 1 else 'upper'
     if lower != 1:
@@ -17,3 +18,13 @@ def check_for_tringular_matrix(A, lower=1):
                 return
             j += 1
         i += 1
+
+def check_for_diagonal_matrix(D):
+    check_for_tringular_matrix(D)
+    check_for_tringular_matrix(D, lower=0)
+
+# A,bの次元チェック
+def Ab_error_check(A, b):
+    if len(b) != len(A):
+        print('Dimension Error!')
+        return
