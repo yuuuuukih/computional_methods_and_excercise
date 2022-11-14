@@ -5,7 +5,7 @@ from .calc_mat_vec import calc_mat_vec
 from .inverse_mat import get_inverse_matrix
 from tqdm import tqdm
 
-
+# 反復法で解く
 METHODS = ['jacobi', 'gauss_seidel', 'sor']
 def calc_iterative_method(A, b, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=10000):
     # methodチェック

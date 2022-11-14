@@ -1,6 +1,3 @@
-import numpy as np
-
-
 # Aが上三角行列のときはlower=0
 def check_for_tringular_matrix(A, lower=1):
     n = len(A)

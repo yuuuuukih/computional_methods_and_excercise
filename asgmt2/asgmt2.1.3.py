@@ -1,13 +1,9 @@
 import numpy as np
 from const_value import A, b1, alpha1
 from function.iterative_method import calc_iterative_method
+from function.residual_norm import get_residual_norm
 import matplotlib.pyplot as plt
 
-def get_residual_norm(vecs, TRUE_VECTOR):
-    e = np.array([])
-    for vec in vecs:
-        e = np.append(e, np.linalg.norm((vec - TRUE_VECTOR), ord=2))
-    return e
 
 def main():
     output_jac = calc_iterative_method(A, b1)

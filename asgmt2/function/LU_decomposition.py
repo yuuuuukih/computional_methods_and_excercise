@@ -1,5 +1,6 @@
 import numpy as np
 
+# AをLU分解する
 def get_LU(A):
     n = len(A)
     # 正方行列のチェック

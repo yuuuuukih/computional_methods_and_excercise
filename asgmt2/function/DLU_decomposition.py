@@ -1,5 +1,6 @@
 import numpy as np
 
+# AをD, L, Uに分解
 def get_DLU(A):
     n = len(A)
     # 正方行列のチェック

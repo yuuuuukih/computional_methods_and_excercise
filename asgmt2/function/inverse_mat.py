@@ -28,6 +28,8 @@ def get_inverse_matrix_upper(U):
     inv_U_trans = get_inverse_matrix_lower(U.T)
     return inv_U_trans.T
 
+# Aの逆行列を求める
+# A^(-1) = U^(-1) * L^(-1)
 def get_inverse_matrix(A):
     L, U = get_LU(A)
     return calc_mat(get_inverse_matrix_upper(U), get_inverse_matrix_lower(L))

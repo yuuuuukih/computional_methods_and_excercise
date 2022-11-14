@@ -1,5 +1,6 @@
 import numpy as np
 
+# mat * vec = vec(ans)を計算
 def calc_mat_vec(mat, vec):
     n = len(mat)
     m = len(vec)
