@@ -9,7 +9,7 @@ from .check_matrix import Ab_error_check
 
 # 反復法で解く
 METHODS = ['jacobi', 'gauss_seidel', 'sor']
-def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=10000):
+def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=10000, new_ver=False):
     # methodチェック
     if not(method in METHODS):
         print('Method Error!')
@@ -32,6 +32,7 @@ def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10
 
     x = np.zeros(n).reshape(1, n)
     r = np.array([np.linalg.norm(b - calc_mat_vec(A, x[0]), ord=2)])
+
     for k in tqdm(range(k_max)):
         x_next = calc_mat_vec(B, x[k]) + c
         x = np.append(x, x_next).reshape(k+2, n)
@@ -39,7 +40,7 @@ def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10
         r_next = np.linalg.norm(b - calc_mat_vec(A, x[-1]), ord=2)
         r = np.append(r, r_next)
 
-        if r[-1] < EPS:
+        if not(new_ver) and r[-1] < EPS or new_ver and r[-1] / np.linalg.norm(b, ord=2) < EPS:
             break
         k += 1
 
