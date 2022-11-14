@@ -19,9 +19,9 @@ def main():
     ax.set_xscale('log')
     ax.set_yscale('log')
 
-    ax.scatter(np.arange(len(output_jac['err'])), output_jac['err'], label='jacobi', s=2)
-    ax.scatter(np.arange(len(output_gau['err'])), output_gau['err'], label='gauss_seidel', s=2)
-    ax.scatter(np.arange(len(output_sor['err'])), output_sor['err'], label='sor', s=2)
+    ax.scatter(np.arange(len(output_jac['r'])), output_jac['r'], label='jacobi', s=2)
+    ax.scatter(np.arange(len(output_gau['r'])), output_gau['r'], label='gauss_seidel', s=2)
+    ax.scatter(np.arange(len(output_sor['r'])), output_sor['r'], label='sor', s=2)
     ax.legend(title='algorithm')
     plt.show()
 

@@ -1,19 +1,13 @@
 import numpy as np
 from const_value import A, b1, alpha1
 from function.iterative_method import calc_iterative_method
-from function.residual_norm import get_residual_norm
 import matplotlib.pyplot as plt
 
 
 def main():
-    output_jac = calc_iterative_method(A, b1)
-    output_gau = calc_iterative_method(A, b1, method='gauss_seidel')
-    output_sor = calc_iterative_method(A, b1, method='sor', omega=1.852)
-
-    r_jac = get_residual_norm(output_jac['sol'], alpha1)
-    r_gau = get_residual_norm(output_gau['sol'], alpha1)
-    r_sor = get_residual_norm(output_sor['sol'], alpha1)
-
+    output_jac = calc_iterative_method(A, b1, alpha1)
+    output_gau = calc_iterative_method(A, b1, alpha1, method='gauss_seidel')
+    output_sor = calc_iterative_method(A, b1, alpha1, method='sor', omega=1.852)
 
     # 収束先を描画
     plt.rcParams['font.family'] = "Meiryo"
@@ -34,21 +28,21 @@ def main():
         ax.set_yscale('log')
 
         if i == 3:
-            ax.scatter(np.arange(len(r_sor)), r_sor, label='e_sor', s=2)
-            ax.scatter(np.arange(len(output_sor['err'])), output_sor['err'], label='r_sor', s=2)
+            ax.scatter(np.arange(len(output_sor['e'])), output_sor['e'], label='e_sor', s=2)
+            ax.scatter(np.arange(len(output_sor['r'])), output_sor['r'], label='r_sor', s=2)
         elif i == 2:
-            ax.scatter(np.arange(len(r_gau)), r_gau, label='e_gauss_seidel', s=2)
-            ax.scatter(np.arange(len(output_gau['err'])), output_gau['err'], label='r_gauss_seidel', s=2)
+            ax.scatter(np.arange(len(output_gau['e'])), output_gau['e'], label='e_gauss_seidel', s=2)
+            ax.scatter(np.arange(len(output_gau['r'])), output_gau['r'], label='r_gauss_seidel', s=2)
         elif i == 1:
-            ax.scatter(np.arange(len(r_jac)), r_jac, label='e_jacobi', s=2)
-            ax.scatter(np.arange(len(output_jac['err'])), output_jac['err'], label='r_jacobi', s=2)
+            ax.scatter(np.arange(len(output_jac['e'])), output_jac['e'], label='e_jacobi', s=2)
+            ax.scatter(np.arange(len(output_jac['r'])), output_jac['r'], label='r_jacobi', s=2)
         else:
-            ax.scatter(np.arange(len(r_jac)), r_jac, label='e_jacobi', s=2)
-            ax.scatter(np.arange(len(r_gau)), r_gau, label='e_gauss_seidel', s=2)
-            ax.scatter(np.arange(len(r_sor)), r_sor, label='e_sor', s=2)
-            ax.scatter(np.arange(len(output_jac['err'])), output_jac['err'], label='r_jacobi', s=2)
-            ax.scatter(np.arange(len(output_gau['err'])), output_gau['err'], label='r_gauss_seidel', s=2)
-            ax.scatter(np.arange(len(output_sor['err'])), output_sor['err'], label='r_sor', s=2)
+            ax.scatter(np.arange(len(output_sor['e'])), output_sor['e'], label='e_sor', s=2)
+            ax.scatter(np.arange(len(output_gau['e'])), output_gau['e'], label='e_gauss_seidel', s=2)
+            ax.scatter(np.arange(len(output_jac['e'])), output_jac['e'], label='e_jacobi', s=2)
+            ax.scatter(np.arange(len(output_jac['r'])), output_jac['r'], label='r_jacobi', s=2)
+            ax.scatter(np.arange(len(output_gau['r'])), output_gau['r'], label='r_gauss_seidel', s=2)
+            ax.scatter(np.arange(len(output_sor['r'])), output_sor['r'], label='r_sor', s=2)
 
         ax.legend(title='algorithm')
 

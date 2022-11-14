@@ -1,13 +1,14 @@
 import numpy as np
+from tqdm import tqdm
 from .DLU_decomposition import get_DLU
 from .calc_mat import calc_mat
 from .calc_mat_vec import calc_mat_vec
 from .inverse_mat import get_inverse_matrix
-from tqdm import tqdm
+from .residual_norm import get_residual_norm
 
 # 反復法で解く
 METHODS = ['jacobi', 'gauss_seidel', 'sor']
-def calc_iterative_method(A, b, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=10000):
+def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=10000):
     # methodチェック
     if not(method in METHODS):
         print('Method Error!')
@@ -38,9 +39,12 @@ def calc_iterative_method(A, b, method=METHODS[0], omega=1.9, EPS=1e-10, k_max=1
             break
         k += 1
 
+    e = get_residual_norm(x, alpha)
+
     output = {
         'sol': x,
-        'err': r
+        'r': r,
+        'e': e
     }
 
     return output
