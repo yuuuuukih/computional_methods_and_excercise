@@ -21,7 +21,7 @@ def get_LDTt(A):
             L[i][j] /= D[j][j]
         D[i][i] = A[i][i]
         for k in range(i):
-            D[i][i] -= L[i][k] * L[i][k] * D[k][k]
+            D[i][i] -= L[i][k]**2 * D[k][k]
 
     return L, D
 
