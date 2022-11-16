@@ -11,10 +11,11 @@ def get_mu_by_wilkinson_shift(A):
     b = a11 + a22
     c = a11 * a22 - a12 * a21
 
-    lamb1 = (b + np.sqrt(b**2 - 4 * c)) / 2
-    lamb2 = (b - np.sqrt(b**2 - 4 * c)) / 2
-    # lamb1 = (b + np.sqrt(np.abs(b**2 - 4 * c))) / 2
-    # lamb2 = (b - np.sqrt(np.abs(b**2 - 4 * c))) / 2
+    # lamb1 = (b + np.sqrt(b**2 - 4 * c)) / 2
+    # lamb2 = (b - np.sqrt(b**2 - 4 * c)) / 2
+    inner_sqrt = 0 if b**2 - 4 * c < 0 else b**2 - 4 * c
+    lamb1 = (b + np.sqrt(inner_sqrt)) / 2
+    lamb2 = (b - np.sqrt(inner_sqrt)) / 2
 
     mu = lamb1 if np.abs(lamb1 - a22) < np.abs(lamb2 - a22) else lamb2
     return mu
