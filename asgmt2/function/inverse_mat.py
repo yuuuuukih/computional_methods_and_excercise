@@ -16,8 +16,6 @@ def get_inverse_matrix_lower(L):
                 A[i][j] = 1 / L[i][j]
             else:
                 A[i][j] = -sum([L[i][k] * A[k][j] for k in range(i)]) / L[i][i]
-            i += 1
-        j += 1
 
     return A
 

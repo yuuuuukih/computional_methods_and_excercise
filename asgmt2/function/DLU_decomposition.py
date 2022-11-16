@@ -15,20 +15,15 @@ def get_DLU(A):
     # D生成
     for i in range(n):
         D[i][i] = A[i][i]
-        i += 1
 
     # L生成
     for i in range(1, n):
         for j in range(i):
             L[i][j] = A[i][j]
-            j += 1
-        i += 1
 
     # U生成
     for i in range(n-1):
         for j in range(i+1, n):
             U[i][j] = A[i][j]
-            j += 1
-        i += 1
 
     return D, L, U

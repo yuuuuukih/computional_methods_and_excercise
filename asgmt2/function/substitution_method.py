@@ -17,9 +17,7 @@ def calc_forward(L, b):
         x[i] = b[i]
         for j in range(i):
             x[i] -= L[i][j] * x[j]
-            j += 1
         x[i] /= L[i][i]
-        i += 1
 
     return x
 
@@ -37,9 +35,7 @@ def calc_backward(U, b):
         x[i] = b[i]
         for j in range(k):
             x[i] -= U[i][n-j-1] * x[n-j-1]
-            j += 1
         x[i] /= U[i][i]
-        k += 1
 
     return x
 

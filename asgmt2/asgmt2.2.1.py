@@ -8,7 +8,7 @@ def main():
     x1 = calc_forward_backward_by_LU(L, U, b1)
     x2 = calc_forward_backward_by_LU(L, U, b2)
     x3 = calc_forward_backward_by_LU(L, U, b3)
-    print(f'x: {x1}\n'
+    print(f'x1: {x1}\n'
           f'x2: {x2}\n'
           f'x3: {x3}\n'
           f'(x1-alpha1)^2: {np.linalg.norm(x1 - alpha1, ord=2) ** 2}\n'

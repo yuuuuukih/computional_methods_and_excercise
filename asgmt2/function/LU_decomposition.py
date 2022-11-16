@@ -33,7 +33,4 @@ def get_LU(A):
                 for k in range(i):
                     U[i][j] -= L[i][k] * U[k][j]
 
-            i += 1
-        j += 1
-
     return L, U

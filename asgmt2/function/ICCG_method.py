@@ -47,8 +47,6 @@ def calc_ICCG_method(A, b, EPS=1e-10):
         new_p = r_tilde[k+1] + mf_beta[k] * p[k]
         p = np.append(p, new_p).reshape(k+2, n)
 
-        k += 1
-
     return x
 
 

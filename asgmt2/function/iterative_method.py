@@ -42,7 +42,6 @@ def calc_iterative_method(A, b, alpha=0, method=METHODS[0], omega=1.9, EPS=1e-10
 
         if not(new_ver) and r[-1] < EPS or new_ver and r[-1] / np.linalg.norm(b, ord=2) < EPS:
             break
-        k += 1
 
     e = get_residual_norm(x, alpha)
 

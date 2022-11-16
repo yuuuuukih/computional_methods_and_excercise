@@ -16,8 +16,6 @@ def check_for_tringular_matrix(A, lower=1):
             if A[i][j] != 0:
                 print(f'Matrix is not {name} triangular matrix!')
                 return
-            j += 1
-        i += 1
 
 def check_for_diagonal_matrix(D):
     check_for_tringular_matrix(D)

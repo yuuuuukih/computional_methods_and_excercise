@@ -13,7 +13,5 @@ def calc_mat(A, B):
     for i in range(n):
         for j in range(m):
             C[i][j] = sum([A[i][k] * B[k][j] for k in range(len(B))])
-            j += 1
-        i += 1
 
     return C
