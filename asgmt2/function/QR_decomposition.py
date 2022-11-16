@@ -1,7 +1,7 @@
 import numpy as np
 from .calc_mat import calc_mat
 
-
+# ヘッセンベルク行列によるQR分解
 def get_QR(A):
     n = len(A)
 

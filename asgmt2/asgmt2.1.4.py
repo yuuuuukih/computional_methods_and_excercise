@@ -1,6 +1,4 @@
-import numpy as np
 from const_value import A, b1
-from function.modified_cholosky_decomposition import get_U_by_LD
 from function.ICCG_method import calc_ICCG_method
 
 def main():

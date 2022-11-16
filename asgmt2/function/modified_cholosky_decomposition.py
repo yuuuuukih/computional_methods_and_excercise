@@ -2,7 +2,8 @@ import numpy as np
 from .check_matrix import check_for_diagonal_matrix
 from .calc_mat import calc_mat
 
-def get_LDTt(A):
+# A=LDLt
+def get_LDLt(A):
     n = len(A)
     # 正方行列のチェック
     if len(A[0]) != n:
@@ -25,6 +26,7 @@ def get_LDTt(A):
 
     return L, D
 
+# D^1/2
 def get_square_root_matrix(D):
     # 対角行列のチェック
     check_for_diagonal_matrix(D)
@@ -36,9 +38,9 @@ def get_square_root_matrix(D):
 
     return sqrt_D
 
-
+# A=UtU
 def get_U_by_LD(A):
-    L ,D = get_LDTt(A)
+    L ,D = get_LDLt(A)
     U = calc_mat(get_square_root_matrix(D), L.T)
 
     return U

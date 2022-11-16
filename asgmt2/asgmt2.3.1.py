@@ -1,4 +1,3 @@
-import numpy as np
 from function.QR_method import get_eigen_value_by_QR
 from const_value import A
 from function.inverse_iteration import calc_inverse_iteration

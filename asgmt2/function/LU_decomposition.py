@@ -20,11 +20,6 @@ def get_LU(A):
                 L[i][j] = A[i][j]
                 for k in range(j):
                     L[i][j] -= L[i][k] * U[k][j]
-                # try:
-                #     L[i][j] /= U[j][j]
-                # except RuntimeWarning:
-                #     L[i][j] = 0
-
                 # if U[j][j] < 1e-5:
                 #     print('THIS!!!')
                 #     L[i][j] = 0

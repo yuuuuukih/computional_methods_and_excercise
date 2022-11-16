@@ -9,6 +9,7 @@ def calc_inverse_iteration(A, lamb, EPS=1e-10, k_max=5):
         print('Input matrix is not a square matrix!')
         return
 
+    # 収束させるために固有値に微丈量を足す
     mu = lamb + 1e-5
     L, U = get_LU(A - mu * np.identity(n))
     x = np.ones(n)

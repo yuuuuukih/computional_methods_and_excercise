@@ -7,6 +7,7 @@ from .substitution_method import calc_forward_backward_by_LU
 from tqdm import tqdm
 from asgmt2.decorator.TimeMeasurement import print_proc_time
 
+# 不完全コレスキー分解共役勾配法（ICCG法：Imcomplete Choleski decomposition Conjugate Gradient method）
 @print_proc_time
 def calc_ICCG_method(A, b, EPS=1e-10):
     # A,b次元チェック
