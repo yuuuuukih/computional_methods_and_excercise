@@ -22,7 +22,6 @@ def main():
     # 対称行列を生成
     dim = 9
     A = get_symmetric_matrix(dim)
-    # print(A)
 
     eigenval = get_eigen_value_by_QR(A)
     print(eigenval)
