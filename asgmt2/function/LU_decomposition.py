@@ -25,10 +25,12 @@ def get_LU(A):
                 # except RuntimeWarning:
                 #     L[i][j] = 0
 
-                if U[j][j] < 1e-10:
-                    L[i][j] = 0
-                else:
-                    L[i][j] /= U[j][j]
+                # if U[j][j] < 1e-5:
+                #     print('THIS!!!')
+                #     L[i][j] = 0
+                # else:
+                #     L[i][j] /= U[j][j]
+                L[i][j] /= U[j][j]  # 条件分岐をするとinverse_iterationが動作しない
 
             else:
                 # u_ijの計算

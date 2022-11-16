@@ -51,3 +51,7 @@ def get_eigen_value_by_QR(A0, EPS=1e-5, iter_max=1000):
                 break
 
     return eigen_value
+
+# 参考文献：
+# https://cattech-lab.com/science-tools/lecture-mini-eigenvalue-qr1/
+# https://168iroha.net/blog/topic/?id=201911251209&sorting=post_date
