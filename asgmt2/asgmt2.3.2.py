@@ -22,9 +22,10 @@ def main():
     # 対称行列を生成
     dim = 9
     A = get_symmetric_matrix(dim)
+    print(f'A: {A}')
 
     eigenval = get_eigen_value_by_QR(A)
-    print(eigenval)
+    print(f'eigenval: {eigenval}')
     abs_eigenval = np.abs(eigenval)
 
     cond_num = max(abs_eigenval) / min(abs_eigenval)
