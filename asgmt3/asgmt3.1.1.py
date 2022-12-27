@@ -1,6 +1,6 @@
 import numpy as np
+from const1 import r0, v0, B, m, q, tau, f
 from function.Euler_method import Euler_method
-from function.cross_product import cross_product3
 from function.ra31 import ra31
 import matplotlib.pyplot as plt
 
@@ -32,20 +32,8 @@ def plt311_er(er):
 
 def main():
     # 初期値の設定(Y=[r, v]とする)
-    r0 = np.array([-1, 0, 0])
-    v0 = np.array([0, 1, 0])
     Y0 = np.array([r0, v0])
-
-    B = np.array([0, 0, 1])
-    m = 1
-    q = 1
-    tau = 2 * np.pi * m / (q * np.linalg.norm(B, ord=2))
     h = tau / 64
-
-    # fの設定
-    def f(Y):
-        dYdt = np.array([Y[1], q / m * cross_product3(Y[1], B)])
-        return dYdt
 
     # Euler法で解く
     Y = Euler_method(f, Y0, h, tau)
