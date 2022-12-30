@@ -1,5 +1,5 @@
 import numpy as np
-from const1 import r0, v0, B, m, q, tau, f
+from const31 import r0, v0, tau, f
 from function.Euler_method import Euler_method
 from function.ra31 import ra31
 import matplotlib.pyplot as plt

@@ -1,8 +1,8 @@
 from display31_r_e import display31_r_e
 
 def main():
-    # Euler法で解く
-    display31_r_e('Euler')
+    # Runge Kutta法で解く
+    display31_r_e('Runge_Kutta')
 
 if __name__ == '__main__':
     main()

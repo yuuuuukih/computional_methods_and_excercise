@@ -11,6 +11,7 @@ tau = 2 * np.pi * m / (q * np.linalg.norm(B, ord=2))
 
 
 # fの設定
+# Y = [r, v] = [[rx, ry, rz], [vx, vy, vz]]
 def f(Y):
     dYdt = np.array([Y[1], q / m * cross_product3(Y[1], B)])
     return dYdt
