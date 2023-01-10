@@ -4,7 +4,7 @@ from display31_Er import display31_Er
 def main():
     # Runge Kutta法で解く
     display31_r_e('Runge_Kutta')
-    display31_Er('Runge_Kutta', 16, 14)
+    display31_Er('Runge_Kutta', 15, 14)
 
 if __name__ == '__main__':
     main()
