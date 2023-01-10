@@ -1,5 +1,5 @@
 import numpy as np
-from function.cross_product import cross_product3
+from asgmt3.function.cross_product import cross_product3
 
 r0 = np.array([-1, 0, 0])
 v0 = np.array([0, 1, 0])

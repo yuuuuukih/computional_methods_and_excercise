@@ -1,9 +1,9 @@
 import numpy as np
-from const31 import r0, v0, tau, f
+from asgmt3.constant.const31 import r0, v0, tau, f
 from function.Euler_method import Euler_method
 from function.Heun_method import Heun_method
 from function.Runge_Kutta_method import Runge_Kutta_method
-from function.ra31 import ra31
+from asgmt3.constant.ra31 import ra31
 import matplotlib.pyplot as plt
 
 def plt31_r(rx, ry):
@@ -40,6 +40,7 @@ def display31_r_e(method):
     # Euler法、Heun法、Runge Kutta法で解く
     Y = Euler_method(f, Y0, h, tau) if method == 'Euler' else Heun_method(f, Y0, h, tau) if method == 'Heun' else Runge_Kutta_method(f, Y0, h, tau) if method == 'Runge_Kutta' else 'Error'
     if Y == 'Error':
+        print('display31_r_e.py Error!')
         return
     rx = np.array([])
     ry = np.array([])
