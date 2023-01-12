@@ -9,7 +9,7 @@ def uk0(tk):
     return np.tanh((tk - Ts) / a) / 2 - np.tanh((tk - Ts - Td) / a) / 2
 
 def main():
-    u = solve_wave_eq_by_FDM(uk0, 0)
+    u = solve_wave_eq_by_FDM(uk0, bc=1) # boundary condition: 0なら固定端、1なら自由端
     x = np.linspace(0, 1, N+1)[:N]
 
     # 収束先を描画
@@ -28,7 +28,8 @@ def main():
         ims.append([im, title])
 
     ani = animation.ArtistAnimation(fig, ims, interval=100, repeat_delay=500)
-    # ani.save('332_fixed_end.gif', writer='pillow', fps=15)
+    # saveするときはコメントアウトを外す
+    # ani.save('332_free_end.gif', writer='pillow', fps=20)
     plt.show()
 
 if __name__ == '__main__':
