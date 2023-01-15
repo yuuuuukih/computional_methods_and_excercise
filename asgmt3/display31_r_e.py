@@ -34,7 +34,7 @@ def plt31_er(er):
 
 def display31_r_e(method):
     # 初期値の設定(Y=[r, v]とする)
-    Y0 = np.array([r0, v0])
+    Y0 = [r0, v0]
     h = tau / 64
 
     # Euler法、Heun法、Runge Kutta法で解く
@@ -42,21 +42,20 @@ def display31_r_e(method):
     if Y == 'Error':
         print('display31_r_e.py Error!')
         return
-    rx = np.array([])
-    ry = np.array([])
 
+    rx = []
+    ry = []
     for i in range(len(Y)):
         el = Y[i]
-        rx = np.append(rx, el[0][0])
-        ry = np.append(ry, el[0][1])
+        rx.append(el[0][0])
+        ry.append(el[0][1])
 
     # 誤差を計算
     ra = ra31(h, tau)
-    er = np.array([])
+    er = []
     for i in range(len(ra)):
-        rc = np.array([rx[i], ry[i]])
-        next_er = np.linalg.norm(rc - ra[i], ord=2)
-        er = np.append(er, next_er)
+        next_er = np.linalg.norm(np.array([rx[i], ry[i]]) - np.array(ra[i]), ord=2)
+        er.append(next_er)
 
     # 描画
     plt31_r(rx, ry)

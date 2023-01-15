@@ -1,12 +1,10 @@
-import numpy as np
 from tqdm import tqdm
 
 def Heun_method(f, Y0, h, tmax):
-    Y = np.array([Y0])
+    Y = [Y0]
     for i in tqdm(range(int(tmax / h))):
         k1 = f(Y[i])
-        k2 = f(Y[i] + h * k1)
-        next_Y = Y[i] + h * 0.5 * (k1 + k2)
-        Y = np.append(Y, next_Y).reshape(i+2, 2, 3)
-
+        k2 = f([[Y[i][j][k] + h * k1[j][k] for k in range(3)] for j in range(2)])
+        next_Y = [[Y[i][j][k] + h * 0.5 * (k1[j][k] + k2[j][k]) for k in range(3)] for j in range(2)]
+        Y.append(next_Y)
     return Y

@@ -21,9 +21,12 @@ def plt31_Er(Er):
     plt.show()
 
 # pmaxはpの最大値、linear_pmaxは一次関数で近似してよいと思われる区間でのpの最大値
-def display31_Er(method, pmax=20, linear_pmax=20):
+def display31_Er(method, pmax=20, linear_pmax=-1):
+    if linear_pmax == -1:
+        linear_pmax = pmax
+
     # 初期値の設定(Y=[r, v]とする)
-    Y0 = np.array([r0, v0])
+    Y0 = [r0, v0]
 
     Er = np.array([])
     for p in range(5, pmax+1):
@@ -35,21 +38,13 @@ def display31_Er(method, pmax=20, linear_pmax=20):
             print('display31_Er.py Error!')
             return
 
-        rx = np.array([])
-        ry = np.array([])
 
-        for i in range(len(Y)):
-            el = Y[i]
-            rx = np.append(rx, el[0][0])
-            ry = np.append(ry, el[0][1])
-
-        # 誤差を計算
         ra = ra31(h, tau)
-        er = np.array([])
+        er = []
         for i in range(len(ra)):
-            rc = np.array([rx[i], ry[i]])
-            next_er = np.linalg.norm(rc - ra[i], ord=2)
-            er = np.append(er, next_er)
+            el = Y[i]
+            next_er = np.linalg.norm(np.array([el[0][0], el[0][1]]) - np.array(ra[i]), ord=2)
+            er.append(next_er)
 
         next_Er = np.amax(np.abs(er))
         Er = np.append(Er, next_Er)

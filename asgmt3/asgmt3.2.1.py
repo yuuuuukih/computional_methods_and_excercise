@@ -25,11 +25,12 @@ def main():
     plt.rcParams['font.family'] = "Meiryo"
     fig = plt.figure(figsize=(6, 6), dpi=100)
     fig.subplots_adjust(left=0.2, bottom=0.2)
-    ax = fig.add_subplot(1, 1, 1, xlabel='x', ylabel='y')
+    ax = fig.add_subplot(1, 1, 1, xlabel='time', ylabel='')
     ax.grid(color="#eeeeee", which="both")
     ax.set_axisbelow(True)
 
-    ax.scatter(x, y, label='x-y', s=2)
+    ax.scatter(np.arange(101)/100, x, label='x', s=2)
+    ax.scatter(np.arange(101)/100, y, label='y', s=2)
     ax.legend()
     plt.show()
 
