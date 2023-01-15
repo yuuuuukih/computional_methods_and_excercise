@@ -1,6 +1,5 @@
-import numpy as np
 from constant.const32 import x0, y0, alpha1, beta1, alpha2, beta2 ,f
-from function.Runge_Kutta_method import Runge_Kutta_method
+from function.Runge_Kutta_method import Runge_Kutta_method_32
 import matplotlib.pyplot as plt
 
 
@@ -14,18 +13,17 @@ def f322(Y):
 
 def main():
     # Runge Kutta法で解く
-    Y0 = np.array([x0, y0])
+    Y0 = [x0, y0]
     tmax = 20
     delta_t = 0.1
-    Y = Runge_Kutta_method(f322, Y0, delta_t, tmax)
+    Y = Runge_Kutta_method_32(f322, Y0, delta_t, tmax)
 
-    x = np.array([])
-    y = np.array([])
+    x = []
+    y = []
 
     for i in range(len(Y)):
-        el = Y[i]
-        x = np.append(x, el[0])
-        y = np.append(y, el[1])
+        x.append(Y[i][0])
+        y.append(Y[i][1])
 
     # 平衡解を取得
     balanced_x, balanced_y = get_balanced_solution(0.6)
