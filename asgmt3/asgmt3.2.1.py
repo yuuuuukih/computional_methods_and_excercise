@@ -29,8 +29,8 @@ def main():
     ax.grid(color="#eeeeee", which="both")
     ax.set_axisbelow(True)
 
-    ax.scatter(np.arange(101)/100, x, label='x', s=2)
-    ax.scatter(np.arange(101)/100, y, label='y', s=2)
+    ax.scatter(np.arange(101)/10, x, label='x', s=2)
+    ax.scatter(np.arange(101)/10, y, label='y', s=2)
     ax.legend()
     plt.show()
 
